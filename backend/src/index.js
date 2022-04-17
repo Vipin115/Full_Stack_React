@@ -3,6 +3,7 @@ const express = require("express");
 const connect = require("./configs/db");
 
 const userController = require("./controller/user.controller");
+const flatsController = require("./controller/flats.controller");
 
 
 const {register,login} = require("./controller/auth.controller")
@@ -16,6 +17,7 @@ app.post("/register", register)
 app.post("/login", login)
 
 app.use("/users", userController);
+app.use("/flats", flatsController);
 
 
 
