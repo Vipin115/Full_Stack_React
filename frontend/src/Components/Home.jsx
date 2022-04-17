@@ -26,7 +26,7 @@ export const Home = ()=>{
     },[])
 
     const getData = () => {
-        axios.get(`http://localhost:4200/flats`).then((res) => {
+        axios.get(`http://localhost:3500/flats`).then((res) => {
             console.log(res.data)
           let final = dispatch(addFlat(res.data));
           setFlat([...final.payload]);
@@ -35,8 +35,6 @@ export const Home = ()=>{
 
 
     return (
-        
-
         
             <TableContainer>
 
@@ -49,7 +47,7 @@ export const Home = ()=>{
                     <Th>Residents</Th>
                 </Tr>
                 {flat.map((el)=>(
-                    <FlatData key={el.id} data={el}/>
+                    <FlatData key={el._id} data={el}/>
                 ))}
     </Thead>
                

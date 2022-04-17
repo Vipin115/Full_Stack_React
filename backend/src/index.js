@@ -4,7 +4,7 @@ const connect = require("./configs/db");
 
 const userController = require("./controller/user.controller");
 const flatsController = require("./controller/flats.controller");
-
+const port = process.env.PORT || 3500
 
 const {register,login} = require("./controller/auth.controller")
 
