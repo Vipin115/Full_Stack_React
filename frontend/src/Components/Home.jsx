@@ -13,6 +13,8 @@ import {
     TableCaption,
     TableContainer,
   } from '@chakra-ui/react'
+  import { Button, ButtonGroup } from '@chakra-ui/react'
+  
 
 export const Home = ()=>{
     const [flat,setFlat] = useState([])
@@ -33,10 +35,15 @@ export const Home = ()=>{
         });
       };
 
+      function Number_asc(){
+
+      }
 
     return (
         
             <TableContainer>
+             <Button variant={"outline"} colorScheme='blue'>Sort Number asc</Button>
+             <Button variant={"outline"} colorScheme='blue'>Sort Number desc</Button>
 
             <Table size="sm" variant="simple" colorScheme={"gray"}>
             <Thead>
@@ -45,6 +52,7 @@ export const Home = ()=>{
                     <Th>Block</Th>
                     <Th>Number</Th>
                     <Th>Residents</Th>
+                    <Th>image</Th>
                 </Tr>
                 {flat.map((el)=>(
                     <FlatData key={el._id} data={el}/>

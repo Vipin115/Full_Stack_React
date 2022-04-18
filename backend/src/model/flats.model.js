@@ -6,7 +6,8 @@ const flatSchema = new mongoose.Schema(
         type: { type: String, required: true },
         block: { type: String, required: true },
         number: {type: Number,required: true },
-        residents: {type: Number,required: true }
+        residents: {type: Number,required: true },
+        image: { type: String, required: true },
     },
     {
         versionKey: false,

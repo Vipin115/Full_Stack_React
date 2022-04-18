@@ -9,6 +9,7 @@ import {
     TableCaption,
     TableContainer,
   } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 
 export const FlatData=({data})=>{
@@ -18,6 +19,7 @@ export const FlatData=({data})=>{
             <Td>{data.block}</Td>
             <Td>{data.number}</Td>
             <Td>{data.residents}</Td>
+            <Td><Link to={"/flatinfo"}><img src={data.image} alt="" /></Link></Td>
         </Tr>
     )
 }

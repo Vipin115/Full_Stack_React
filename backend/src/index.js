@@ -1,4 +1,7 @@
+
 const express = require("express");
+
+require("dotenv").config()
 
 const connect = require("./configs/db");
 
@@ -21,7 +24,7 @@ app.use("/flats", flatsController);
 
 
 
-app.listen(3500, async (req, res) => {
+app.listen(port, async (req, res) => {
     try {
         await connect()
     } catch (e) {
