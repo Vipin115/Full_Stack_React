@@ -19,7 +19,7 @@ export const FlatData=({data})=>{
             <Td>{data.block}</Td>
             <Td>{data.number}</Td>
             <Td>{data.residents}</Td>
-            <Td><Link to={"/flatinfo"}><img src={data.image} alt="" /></Link></Td>
+            <Td><Link to={`/${data._id}`}><img src={data.image} alt="" /></Link></Td>
         </Tr>
     )
 }

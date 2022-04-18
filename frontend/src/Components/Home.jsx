@@ -28,29 +28,60 @@ export const Home = ()=>{
     },[])
 
     const getData = () => {
-        axios.get(`http://localhost:3500/flats`).then((res) => {
+        axios.get(`https://apartment-myapp.herokuapp.com/flats`).then((res) => {
             console.log(res.data)
           let final = dispatch(addFlat(res.data));
           setFlat([...final.payload]);
         });
       };
 
-      function Number_asc(){
+      
 
+      const high = () => {
+        let test = rooms.sort(handlesortasc);
+        let change = dispatch(addFlat(test));
+        setFlat([...change.payload]);
+      };
+    
+      function handlesortasc(a, b) {
+        if (+a.number > +b.number) {
+          return -1;
+        }
+        if (+a.number < +b.number) {
+          return 1;
+        }
+        return 0;
+      }
+      const Low = () => {
+        let test = rooms.sort(handlesortdes);
+        let change = dispatch(addFlat(test));
+        setFlat([...change.payload]);
+      };
+    
+      function handlesortdes(a, b) {
+        if (+a.number > +b.number) {
+          return 1;
+        }
+        if (+a.number < +b.number) {
+          return -1;
+        }
+        return 0;
       }
 
     return (
         
             <TableContainer>
-             <Button variant={"outline"} colorScheme='blue'>Sort Number asc</Button>
-             <Button variant={"outline"} colorScheme='blue'>Sort Number desc</Button>
+              <Button variant={"outline"} colorScheme='blue'>Filter By Owner</Button>
+              <Button variant={"outline"} colorScheme='blue'>Filter By Tenant</Button>
+             <Button onClick={()=>high()} variant={"outline"} colorScheme='blue'>Sort Flat Number asc</Button>
+             <Button onClick={()=>Low()} variant={"outline"} colorScheme='blue'>Sort Flat Number desc</Button>
 
             <Table size="sm" variant="simple" colorScheme={"gray"}>
             <Thead>
             <Tr>
                     <Th>Type</Th>
                     <Th>Block</Th>
-                    <Th>Number</Th>
+                    <Th>Flat Number</Th>
                     <Th>Residents</Th>
                     <Th>image</Th>
                 </Tr>
