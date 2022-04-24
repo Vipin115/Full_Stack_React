@@ -23,14 +23,30 @@ export const Home = ()=>{
 
     const rooms = useSelector((store)=>store.flat)
 
-    useEffect(()=>{
-        getData()
-    },[])
+    // useEffect(()=>{
+    //     getData()
+    // },[])
 
     const getData = () => {
         axios.get(`https://apartment-myapp.herokuapp.com/flats`).then((res) => {
             console.log(res.data)
           let final = dispatch(addFlat(res.data));
+          setFlat([...final.payload]);
+        });
+      };
+
+      const filterByOwner = () => {
+        axios.get(`https://apartment-myapp.herokuapp.com/flats`).then((res) => {
+            console.log(res.data)
+          let final = dispatch(addFlat(res.data.filter(data=>data.type=="owner")));
+          setFlat([...final.payload]);
+        });
+      };
+
+      const filterByTenant = () => {
+        axios.get(`https://apartment-myapp.herokuapp.com/flats`).then((res) => {
+            console.log(res.data)
+          let final = dispatch(addFlat(res.data.filter(data=>data.type=="tenant")));
           setFlat([...final.payload]);
         });
       };
@@ -71,12 +87,12 @@ export const Home = ()=>{
     return (
         
             <TableContainer>
-              <Button variant={"outline"} colorScheme='blue'>Filter By Owner</Button>
-              <Button variant={"outline"} colorScheme='blue'>Filter By Tenant</Button>
+              <Button onClick={()=>filterByOwner()} variant={"outline"} colorScheme='blue'>Filter By Owner</Button>
+              <Button onClick={()=>filterByTenant()} variant={"outline"} colorScheme='blue'>Filter By Tenant</Button>
              <Button onClick={()=>high()} variant={"outline"} colorScheme='blue'>Sort Flat Number asc</Button>
              <Button onClick={()=>Low()} variant={"outline"} colorScheme='blue'>Sort Flat Number desc</Button>
 
-            <Table size="sm" variant="simple" colorScheme={"gray"}>
+            <Table size="sm" variant="striped" colorScheme="gray">
             <Thead>
             <Tr>
                     <Th>Type</Th>

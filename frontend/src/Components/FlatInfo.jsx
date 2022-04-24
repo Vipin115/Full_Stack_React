@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios"
+import { Box, Container } from '@chakra-ui/react'
 
 
 
@@ -15,11 +16,16 @@ export const FlatInfo =()=>{
       })
     },[])
     return (
-        <div>
-            <img src={product.image} alt="" />
-            <h2>{product.name}</h2>
-            <h2>{product.age}</h2>
-            <h2>{product.gender}</h2>
-        </div>
+        <Container maxW='sm' fontWeight='semibold' fontSize='xl'>
+          <Box borderWidth='2px' borderRadius='lg'>
+
+            <img src={product.image} alt="" width={"100%"}/>
+            <h1>Name: {product.name}</h1>
+            <h1>Age: {product.age}</h1>
+            <h1>Gender: {product.gender}</h1>
+            <h1>Block: {product.block}</h1>
+          </Box>
+
+        </Container>
     )
 }
